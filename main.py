@@ -26,11 +26,18 @@ def index():
     return render_template('blog.html', blogs=blogs)
 
 
-@app.route("/blog", methods = ['GET', 'POST'])
+@app.route("/blog")
 def blog():
-    blogs = Blog.query.all()
-    return render_template('blog.html', blogs=blogs)
+    id = request.args.get('id')
+    
+    if not id:
+        blogs = Blog.query.all()
+        return render_template('blog.html', blogs=blogs)
 
+    else:
+        blog = Blog.query.get(int(id))
+        return render_template('individualposts.html', blog=blog )
+    
 
 @app.route('/newpost', methods = ['POST', 'GET'])    
 def new_post():
@@ -40,7 +47,6 @@ def new_post():
     if request.method == 'POST':
         blog_title = request.form['title']
         blog_body = request.form['body']
-        blog_id = request.form['blog_id']
         title_error = ''
         body_error = ''
 
@@ -53,10 +59,10 @@ def new_post():
             new_blog = Blog(blog_title, blog_body)
             db.session.add(new_blog)
             db.session.commit()
-            return redirect('/blog')
+            
+            return redirect('/blog?id={}'.format(new_blog.blog_id))
     
-    return redirect('/blog?={}').format(blog_id)
-    #return render_template('newpost.html', title_error=title_error, body_error=body_error)
+    return render_template('newpost.html', title_error=title_error, body_error=body_error)
         
 
    

@@ -3,22 +3,22 @@
 
 {% block content %}
 
-    <h1>Build-A-Blog!</h1>
+    <h1>Add a New Blog Entry</h1>
         <form method='post' action='/newpost'>
             
             <label>
-                Title: 
+                Title: <br>
                 <input type="text" name="title" /> {{title_error}}
             </label>
 
-            <br>
+            <br><br>
         
             <label>
-                Body: 
+                Body: <br>
                 <textarea type="text" name="body" placeholder="Enter text here..."></textarea> {{body_error}}
             </label>
            
-            <br>
+            <br><br>
 
             <input type="submit" value='submit' />
                 
