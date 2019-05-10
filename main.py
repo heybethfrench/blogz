@@ -22,7 +22,8 @@ class Blog(db.Model):
 
 @app.route("/")
 def index():
-    return redirect ('/blog')
+    blogs = Blog.query.all()
+    return render_template('blog.html', blogs=blogs)
 
 
 @app.route("/blog", methods = ['GET', 'POST'])
@@ -39,6 +40,7 @@ def new_post():
     if request.method == 'POST':
         blog_title = request.form['title']
         blog_body = request.form['body']
+        blog_id = request.form['blog_id']
         title_error = ''
         body_error = ''
 
@@ -53,7 +55,8 @@ def new_post():
             db.session.commit()
             return redirect('/blog')
     
-    return render_template('newpost.html', title_error=title_error, body_error=body_error)
+    return redirect('/blog?={}').format(blog_id)
+    #return render_template('newpost.html', title_error=title_error, body_error=body_error)
         
 
    

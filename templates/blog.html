@@ -11,8 +11,11 @@
 
         <ul>
             {% for blog in blogs %}
-            <h1>{{blog.title}}</h1>
+            
+            <a href="/blog?id={{blog.blog_id}}"<h1>{{blog.title}}</h1></a>
+            
             <p>{{blog.body}}</p>
+            
             {% endfor %}
         </ul>
 
