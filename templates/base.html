@@ -1,21 +1,35 @@
 <!doctype html>
 <html>
     <head>
-        <title>Build-a-Blog!</title>
+        <title>Blogz!</title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='blogzstylesheet.css')}}">
     </head>
 <body>
     <header>
-        <nav>
-            <tr>
-                <td><a href="/">Blog Home</a></td>
-                <td><a href="/allblogs">All Blogs</a></td>
-                <td><a href="/newpost">Create New Post</a></td>
-                <td><a href="/signup">Sign Up</a></td>
-                <td><a href="/login">Log In</a></td>
-                <td><a href="/logout">Log Out</a></td>
+            <table>
+                <tr>
+                    <td class="navigation"><a href="/">Blog Home</a></td>
+                    <td class="navigation"><a href="/blog">All Blogs</a></td>
+                    <td class="navigation"><a href="/newpost">Create New Post</a></td>
+                    
+                    
+                    
+                    {% if 'username' in session %}
 
-            </tr>
-        </nav>
+
+                    <td class="user"><a href="/logout">Log Out</a></td>
+
+                    {% else %}
+
+                    <td class="user"><a href="/signup">Sign Up</a></td>
+                    <td class="user"><a href="/login">Log In</a></td>
+
+                    {% endif %}
+                
+                
+                </tr>
+            </table>
     </header>
 
     {% block content %}

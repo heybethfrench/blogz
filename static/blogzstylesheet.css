@@ -1,0 +1,22 @@
+link {
+  display: none;
+}
+
+table {
+  width: 100%;
+  
+}
+
+.user {
+  float: right;
+  padding-left: 20px;
+}
+
+.navigation {
+  float: left;
+  padding-right: 20px;
+}
+
+.error {
+  color: red;
+}

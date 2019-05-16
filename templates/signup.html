@@ -10,28 +10,28 @@
             <td>
                 <input name="username" type="text">
             </td>
-            <td>{{ username_error }}</td>
+            <td class="error">{{ username_error }}</td>
         </tr>
         <tr>
             <td><label for="password">Password</label></td>
             <td>
                 <input name="password" type="password">
             </td>
-            <td>{{ password_error }}</td>
+            <td class="error">{{ password_error }}</td>
         </tr>
         <tr>
             <td><label for="verify">Verify Password</label></td>
             <td>
                 <input name="verify" type="password">
             </td>
-            <td>{{ verify_error }}</td>
+            <td class="error">{{ verify_error }}</td>
         </tr>
         <tr>
             <td><label for="email">E-mail</label></td>
             <td>
                 <input name="email" type="text">
             </td>
-            <td> {{ email_error}}</td>
+            <td class="error"> {{ email_error}}</td>
         </tr>
     </table>
     <input type="submit" value="Register">
